@@ -1,0 +1,31 @@
+<!DOCUMENT html>
+<html>
+  <head>
+    <title> Calculo de Distancia de Frenado </title>
+  </head>
+  <body>
+    <h1> Calculo de Distancia de Frenado de un Vehiculo</h1>
+    <p> Los Tiempos de Reaccion deben ser menores a un Segundo para ser Permitidios por la ley</P>
+      <script>
+        var Velocidad_vehiculo = prompt("Cual es la Velocidad del Vehiculo ");
+        var Tiempo_reaccion = prompt("Cual es el Tiempo de Reaccion, Ejemplo: 0.5 seg, 0.7 seg "); // tiempo que le toma al conductor reaccionar ante el peligro
+        var Adeherencia_neumatico = 0.7; // friccion entre rueda, y calzada
+        var Distancia_total; // distancia que le toma al vehiculo detenerse
+        var Distancia_reaccion; // se recorre mientras se detecta el peligro,hasta que se pisa el pedal de freno
+        var Distancia_frenado;// se recorreo desde que se pisa el freno hasta detenerse
+        var GRAVEDAD = 9.8; //Gravedad Representada en mts/seg
+        var RESISTENCIA_NEUMATICO = 2; // Resistencia de la rueda a detenerse su movimiento
+        var SEGUNDOS = 3600; // Segundos, se usa para llevar los KM/H, a mts/seg
+        var METROS = 1000;
+        var Distancia_reaccion = (( Velocidad_vehiculo * Tiempo_reaccion ) * METROS) / SEGUNDOS;
+
+        var Distancia_frenado = ((( Velocidad_vehiculo  * METROS) / SEGUNDOS) ** 2) / ( GRAVEDAD * Adeherencia_neumatico * RESISTENCIA_NEUMATICO );
+
+        var Distancia_total = Distancia_reaccion + Distancia_frenado;
+
+        document.write ("Tu distancia de Reaccion es </P> <strong>" + Distancia_reaccion + "</strong> Metros");
+        document.write ("Tu distancia de Frenado es </P> <strong>" + Distancia_frenado + "</strong> Metros");
+        document.write ("Tu distancia de Detenccion es </P> <strong>" + Distancia_total + "</strong> Metros");
+      </script>
+  </body>
+  </html>
